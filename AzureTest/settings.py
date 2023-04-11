@@ -28,6 +28,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
+CSRF_TRUSTED_ORIGINS = ['https://'+ os.environ['staticdeployment.azurewebsites.net']]
 
 # Application definition
 

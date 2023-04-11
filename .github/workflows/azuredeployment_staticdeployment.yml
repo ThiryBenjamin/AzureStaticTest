@@ -32,9 +32,6 @@ jobs:
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
       
-      - name: Collect static
-        run: python manage.py collectstatic
-
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v2
         with:
@@ -63,4 +60,4 @@ jobs:
         with:
           app-name: 'StaticDeployment'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8F3EFC882EF64062B3A51D1F9B163925 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D006E6AFFFCC49378674CC5EE1ABF209 }}

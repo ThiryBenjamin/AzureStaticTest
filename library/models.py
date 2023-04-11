@@ -1,7 +1,16 @@
 from django.db import models
-from django.db.models import IntegerField, Model
+from django.db.models import Model, IntegerField
 from django.core.validators import MaxValueValidator, MinValueValidator
 # Create your models here.
+
+
+class Csv(models.Model):
+    file_name = models.FileField(upload_to="library")
+    activated = models.BooleanField(default=False)
+
+    def __str__(self) :
+        return f"{self.file_name}"
+
 
 class Claim(models.Model):
     INCURRED = "Incurred"
@@ -12,7 +21,10 @@ class Claim(models.Model):
         (PAID, "Paid"),
         (OUTSTANDING, "Outstanding"),
     ]
-    claim_number = models.FileField(upload_to='library')
+    claim_number = models.CharField(
+        max_length=20,
+        default= "Null"
+        )
     year = models.IntegerField(
         default= 2000,
         validators=[
@@ -28,4 +40,4 @@ class Claim(models.Model):
     amount = models.FloatField()
 
     def __str__(self):
-        return self.number
+        return self.claim_number

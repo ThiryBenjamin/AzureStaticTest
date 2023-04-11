@@ -2,10 +2,29 @@
 
 <html>
     <head>
-        <title>This is the library</title>
+        <title>This is the library</title> 
     </head>
     <body>
         <h1>Hello, you've created your first html template</h1>
         <img src="{% static 'library/qbe-re-logo.png'%}" alt="Logo">
+        <h2>Upload your file here : </h2>
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form}}
+            <button type = "submit">Confirm</button>
+        </form>
+        <br> 
+        {% if Claim.exists %}
+            <table>
+                {% for x in Claim %}
+                <tr>
+                    <td>{{ x.year }}</td>
+                    <td>{{ x.amount }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+        <p> no file to display</p>
+        {% endif %}
     </body>
 </html>
